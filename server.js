@@ -50,40 +50,73 @@ const db = mysql.createConnection(
     {
         host: 'localhost',
         user: 'root',
-        password: 'vegetable',
-        database: 'employee_db'
+        password: 'Iphone1996!',
+        database: 'work_db'
     },
     console.log(`Welcome to the Employee Manager!`)
 ); 
 
 function viewDepartments() {
+    const sql = 'SELECT * FROM departments'
+    db.query(sql, (err, rows)=>{
+        console.log(rows)
 
-}
+    }
+    )
+};
 
 function viewRoles() {
-
+    const sql = 'SELECT * FROM roles'
+    db.query(sql, (err, rows)=>{
+        console.log(rows)
 }
+    )
+}; 
 
-function viewEmployees() {
+// function viewEmployees() {
 
-}
+// }
 
 function addADepartment() {
+    inquirer
+    .prompt([
+        {
+            type: 'input',
+            name: "departmentName",
+            message: "Please input a department name",
+
+        }
+    ]).then((response) => {
+        // THIS IS AN OBJECT WITH A KEY VALUE PAIR
+        console.log(response); 
+        console.log(response.departmentName)
+        
+        const sql = `INSERT INTO departments (name) VALUES (?)`
+        db.query(sql, [response.departmentName], (err, rows) => {
+            if (err) {
+                console.log('There was an error');
+                console.log(err);
+            }
+
+            console.log(rows)
+            viewDepartments();
+        })
+    } )
 
 }
 
-function addRole() {
+// function addRole() {
 
-}
+// }
 
-function addEmployee() {
+// function addEmployee() {
 
-}
+// }
 
-function updateEmployee() {
+// function updateEmployee() {
 
-}
+// }
 
-function updateEmployeeRole() {
+// function updateEmployeeRole() {
 
-}
+// }
