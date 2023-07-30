@@ -105,9 +105,29 @@ function addADepartment() {
 
 }
 
-// function addRole() {
+function addRole() {
+     inquirer
+     .prompt([
+        {
+            type: 'input',
+            name: "title",
+            message: "Please insert the new role",
+        }
+     ]).then((response) => {
+        console.log(response);
+        console.log(response.departmentName)
 
-// }
+        const sql1 = `INSERT INTO roles (name) VALUES (?)`
+        db.query(sql, [response.title], (err, rows) => {
+            if (err) {
+                console.log('There was an error');
+                console.log(err);
+            }
+            console.log(rows)
+            viewRoles();
+        })
+     })
+}
 
 // function addEmployee() {
 
