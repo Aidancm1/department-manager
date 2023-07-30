@@ -119,10 +119,10 @@ function addRole() {
         }
      ]).then((response) => {
         console.log(response);
-        console.log(response.departmentName)
+        console.log(response.title)
 
         const sql1 = `INSERT INTO roles (name) VALUES (?)`
-        db.query(sql, [response.title], (err, rows) => {
+        db.query(sql1, [response.title], (err, rows) => {
             if (err) {
                 console.log('There was an error');
                 console.log(err);
@@ -133,9 +133,30 @@ function addRole() {
      })
 }
 
-// function addEmployee() {
+function addEmployee() {
+    inquirer
+    .prompt([
+        {
+            type: 'input',
+            name: "firstName",
+            message: "Please insert new employee name", 
+        }
+    ]).then((response) => {
+        console.log(response);
+        console.log(response.firstName)
 
-// }
+        const sql2 = `INSERT INTO employees (name) VALUES (?)`
+        db.query(sql2, [response.firstName], (err, rows) => {
+            if (err) {
+                console.log('There was an error');
+                console.log(err);
+            }
+            console.log(rows)
+            viewEmployees();
+        })
+    })
+
+}
 
 // function updateEmployee() {
 
