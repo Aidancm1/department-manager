@@ -73,9 +73,13 @@ function viewRoles() {
     )
 }; 
 
-// function viewEmployees() {
+function viewEmployees() {
+    const sql = 'SELECTION * FROM employees'
+    db.query(sql, (err, rows)=> {
+        console.log(rows)
+    })
 
-// }
+};
 
 function addADepartment() {
     inquirer
