@@ -1,7 +1,8 @@
 # department-manager
 
 
-
+# LINK TO SCREENCASTIFY VIDEO
+https://drive.google.com/file/d/1D8dpYJHxjmX2WXipmZvs3RhfYw9kgGYx/view
 
 # User Story
 AS A business owner,
